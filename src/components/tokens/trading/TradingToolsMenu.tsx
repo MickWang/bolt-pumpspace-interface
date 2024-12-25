@@ -1,47 +1,55 @@
-import React, { useState } from 'react';
-import { Check, Search } from 'lucide-react';
-import { useClickOutside } from '../../../hooks/useClickOutside';
-import { useTradingTools } from '../../../hooks/useTradingTools';
+import React, { useState } from "react";
+import { Check, Search } from "lucide-react";
+import { useClickOutside } from "../../../hooks/useClickOutside";
+import { useTradingTools } from "../../../hooks/useTradingTools";
+import { tradingPlatforms } from "../../signals/token/platforms/TradingPlatform";
 
 interface TradingToolsMenuProps {
   onClose: () => void;
 }
 
-const tradingTools = [
-  { id: 'gmgn', name: 'GMGN', icon: '/img-gmgn.png' },
-  { id: 'photon', name: 'Photon', icon: '/img-phanton.png' },
-  { id: 'bullx', name: 'Bullx', icon: '/img-bullx.png' },
-  { id: 'banana-gun', name: 'Banana Gun', icon: '/img-banana.png' },
-  { id: 'maestro', name: 'Maestro', icon: '/img-meastro.png' },
-  { id: 'sol-trading-bot', name: 'SOL Trading Bot', icon: '/img-sol-trading-bot.png' },
-  { id: 'pepe-boost', name: 'PEPE Boost', icon: '/img-pepe-boost.png' },
-];
+const tradingTools = tradingPlatforms;
+//  [
+//   { id: "gmgn", name: "GMGN", icon: "/trade-gmgn.png" },
+//   { id: "photon", name: "Photon", icon: "/trade-photon.png" },
+//   { id: "bullx", name: "Bullx", icon: "/trade-bullx.png" },
+//   { id: "banana-gun", name: "Banana Gun", icon: "/trade-banana-gun.png" },
+//   { id: "maestro", name: "Maestro", icon: "/trade-meastro.png" },
+//   {
+//     id: "sol-trading-bot",
+//     name: "SOL Trading Bot",
+//     icon: "/trade-sol-trading-bot.png",
+//   },
+//   { id: "pepe-boost", name: "PEPE Boost", icon: "/trade-pepe-boost.png" },
+// ];
 
 export function TradingToolsMenu({ onClose }: TradingToolsMenuProps) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const { selectedTool, setSelectedTool } = useTradingTools();
   const ref = useClickOutside<HTMLDivElement>(onClose);
 
-  const filteredTools = tradingTools.filter(tool =>
+  const filteredTools = tradingTools.filter((tool) =>
     tool.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleToolSelect = (tool: typeof tradingTools[0]) => {
+  const handleToolSelect = (tool: (typeof tradingTools)[0]) => {
     setSelectedTool(tool);
     onClose();
   };
 
   return (
-    <div 
-      ref={ref}
-      className="absolute right-0 top-full mt-2 w-64 z-[100]"
-    >
-      <div className="relative bg-surface border border-gray-700 rounded-lg 
-                    shadow-lg shadow-black/20 animate-in fade-in">
+    <div ref={ref} className="absolute right-0 top-full mt-2 w-64 z-[100]">
+      <div
+        className="relative bg-surface border border-gray-700 rounded-lg 
+                    shadow-lg shadow-black/20 animate-in fade-in"
+      >
         {/* Search Box */}
         <div className="p-3 border-b border-gray-700">
           <div className="relative">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search
+              size={14}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            />
             <input
               type="text"
               value={searchTerm}
@@ -64,11 +72,12 @@ export function TradingToolsMenu({ onClose }: TradingToolsMenuProps) {
               onClick={() => handleToolSelect(tool)}
               className={`w-full flex items-center space-x-3 px-3 py-2.5
                        transition-all duration-200 group
-                       ${selectedTool?.id === tool.id
-                         ? 'bg-cyan-500/10 text-cyan-400' 
-                         : 'hover:bg-cyan-500/10 text-gray-300 hover:text-cyan-400'}`}
+                       ${
+                         selectedTool?.id === tool.id
+                           ? "bg-cyan-500/10 text-cyan-400"
+                           : "hover:bg-cyan-500/10 text-gray-300 hover:text-cyan-400"
+                       }`}
             >
-            
               <img className="w-6 h-6" src={tool.icon} />
               <span className="flex-1 text-left">{tool.name}</span>
               {selectedTool?.id === tool.id && (
