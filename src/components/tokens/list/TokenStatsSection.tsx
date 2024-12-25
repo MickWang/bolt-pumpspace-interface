@@ -33,7 +33,7 @@ export function TokenStatsSection({ token }: TokenStatsSectionProps) {
 
       {/* Buy Info */}
       <div className="text-right">
-        <div className="text-cyan-400">{token.formattedValues.buyTotalCost}</div>
+        <div className="text-cyan-400">${token.formattedValues.buyTotalCost}</div>
         <div className="text-xs text-gray-400">
           {`${token.buyTokenAmountFormatted}/${token.buyTxCount} txns`}
         </div>
@@ -41,7 +41,7 @@ export function TokenStatsSection({ token }: TokenStatsSectionProps) {
 
       {/* Sell Info */}
       <div className="text-right">
-        <div className="text-red-400">{token.formattedValues.sellTotalCost}</div>
+        <div className="text-red-400">${token.formattedValues.sellTotalCost}</div>
         <div className="text-xs text-gray-400">
           {`${token.sellTokenAmountFormatted}/${token.sellTxCount} txns`}
         </div>

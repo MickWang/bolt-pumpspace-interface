@@ -24,7 +24,7 @@ export function TokenList() {
 
   if (isLoading) {
     return (
-      <div className="flex-1 flex flex-col">
+      <div className="h-full flex flex-col">
         {header}
         <TokenListLoading />
       </div>
@@ -39,13 +39,13 @@ export function TokenList() {
 
   return (
     <div 
-      className="flex-1 flex flex-col"
+      className="h-full flex flex-col"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {header}
       
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto min-h-0">
         {sortedTokens.length === 0 ? (
           <TokenListEmpty />
         ) : (
