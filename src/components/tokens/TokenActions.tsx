@@ -1,6 +1,7 @@
-import React from 'react';
-import { useTradingTools } from '../../hooks/useTradingTools';
-import type { Token } from '../../types/token';
+import React from "react";
+import { useTradingTools } from "../../hooks/useTradingTools";
+import type { Token } from "../../types/token";
+import { tradingPlatforms } from "../signals/token/platforms/TradingPlatform";
 
 interface TokenActionsProps {
   token: Token;
@@ -11,19 +12,21 @@ export function TokenActions({ token }: TokenActionsProps) {
 
   const handleBuyClick = () => {
     if (!selectedTool) return;
-    
-    const baseUrls = {
-      gmgn: 'https://gmgn.ai/trade/',
-      photon: 'https://photon.trade/',
-      bullx: 'https://bullx.trade/',
-      'banana-gun': 'https://banana.gun/trade/',
-      maestro: 'https://maestro.trade/',
-      'sol-trading-bot': 'https://sol-trading-bot.com/',
-      'pepe-boost': 'https://pepe-boost.trade/'
-    };
 
-    const url = `${baseUrls[selectedTool.id as keyof typeof baseUrls]}${token.address}`;
-    window.open(url, '_blank');
+    // const baseUrls = {
+    //   gmgn: "https://gmgn.ai/trade/",
+    //   photon: "https://photon.trade/",
+    //   bullx: "https://bullx.trade/",
+    //   "banana-gun": "https://banana.gun/trade/",
+    //   maestro: "https://maestro.trade/",
+    //   "sol-trading-bot": "https://sol-trading-bot.com/",
+    //   "pepe-boost": "https://pepe-boost.trade/",
+    // };
+    const url = tradingPlatforms
+      .find((item) => item.id === selectedTool.id)
+      ?.getUrl(token.address);
+    // const url = `${baseUrls[selectedTool.id as keyof typeof baseUrls]}${token.address}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -36,8 +39,8 @@ export function TokenActions({ token }: TokenActionsProps) {
       >
         <span>Buy</span>
         {selectedTool && (
-          <img 
-            src={`/${selectedTool.id}-icon.png`}
+          <img
+            src={`${selectedTool.icon}`}
             alt={selectedTool.name}
             className="w-4 h-4 opacity-80 group-hover:opacity-100 transition-opacity"
           />
