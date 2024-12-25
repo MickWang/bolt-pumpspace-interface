@@ -22,8 +22,13 @@ export function SignalsList() {
   return (
     <div className="flex-1 overflow-y-auto px-4 space-y-2 pb-4">
       {filteredSignals.length === 0 ? (
-        <div className="text-center text-gray-400 py-8">
-          Waiting for signals...
+        <div className="flex flex-col items-center justify-center py-12 space-y-4">
+          <div className="relative w-16 h-16">
+            <div className="absolute inset-0 border-t-2 border-r-2 border-cyan-400/30 rounded-full animate-[spin_3s_linear_infinite]" />
+            <div className="absolute inset-0 border-t-2 border-r-2 border-cyan-400/20 rounded-full animate-[spin_2s_linear_infinite]" />
+            <div className="absolute inset-0 border-t-2 border-r-2 border-cyan-400/10 rounded-full animate-[spin_1s_linear_infinite]" />
+          </div>
+          <span className="text-gray-400 animate-pulse">Scanning signals...</span>
         </div>
       ) : (
         filteredSignals.map((signal) => (

@@ -6,8 +6,10 @@ export function useLastUpdate(timestamp: number) {
   useEffect(() => {
     const updateDisplay = () => {
       const seconds = Math.floor((Date.now() - timestamp) / 1000);
-      
-      if (seconds < 60) {
+      if(seconds < 0){
+         setDisplayTime(`${0}s ago`);
+      }
+      else if (seconds < 60) {
         setDisplayTime(`${seconds}s ago`);
       } else if (seconds < 3600) {
         const minutes = Math.floor(seconds / 60);

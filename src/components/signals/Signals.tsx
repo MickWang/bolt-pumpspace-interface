@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { SignalsHeader } from './SignalsHeader';
 import { SignalsSearch } from './SignalsSearch';
 import { SignalsFilters } from './SignalsFilters';
@@ -6,14 +6,12 @@ import { SignalsList } from './SignalsList';
 import { useSignalConnection } from '../../hooks/signals/useSignalConnection';
 import { useSignalStore } from '../../hooks/signals/useSignalStore';
 
-interface SignalsProps {
-  isCollapsed: boolean;
-  onCollapse: () => void;
-}
 
-export function Signals({ isCollapsed, onCollapse }: SignalsProps) {
+
+export function Signals() {
   useSignalConnection();
   const { signals, isPaused } = useSignalStore();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div className={`flex flex-col bg-background transition-all duration-300 ease-in-out
@@ -21,7 +19,7 @@ export function Signals({ isCollapsed, onCollapse }: SignalsProps) {
       <SignalsHeader 
         lastUpdate={signals[0]?.timestamp || Date.now()}
         isCollapsed={isCollapsed}
-        onCollapse={onCollapse}
+        onCollapse={()=>setIsCollapsed(!isCollapsed)}
         isPaused={isPaused}
       />
       

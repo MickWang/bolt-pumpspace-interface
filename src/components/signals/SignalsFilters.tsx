@@ -28,7 +28,7 @@ export function SignalsFilters() {
   };
 
   return (
-    <div className="px-4 pb-4 flex space-x-2">
+    <div className="px-4 pb-4 flex space-x-2 mt-4">
       {/* Trade Type Filter */}
       <div className="relative flex-1">
         <button 

@@ -30,7 +30,7 @@ export function SignalsHeader({ lastUpdate, isCollapsed, onCollapse }: SignalsHe
         <ChevronDown 
           size={16} 
           className={`text-gray-400 transition-transform duration-200
-                   ${isCollapsed ? 'rotate-180' : ''}`}
+                   ${!isCollapsed ? 'rotate-180' : ''}`}
         />
       </div>
     </button>
