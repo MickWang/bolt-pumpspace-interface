@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface TradingTool {
   id: string;
@@ -12,6 +12,6 @@ interface TradingToolsStore {
 }
 
 export const useTradingTools = create<TradingToolsStore>((set) => ({
-  selectedTool: { id: "gmgn", name: "GMGN", icon: "/trade-gmgn.png" }, // Default tool
+  selectedTool: { id: 'gmgn', name: 'GMGN', icon: '/img-gmgn.png' }, // Default tool
   setSelectedTool: (tool) => set({ selectedTool: tool }),
 }));
