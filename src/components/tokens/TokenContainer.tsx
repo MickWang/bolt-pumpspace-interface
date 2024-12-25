@@ -16,13 +16,15 @@ export function TokenContainer() {
   useTokenWebSocket(timeFilter);
 
   return (
-    <div className="flex-1 flex flex-col bg-background overflow-hidden">
+    <div className="flex-1 flex flex-col h-full overflow-hidden">
       <TokenListControls 
         timeFilter={timeFilter}
         onTimeFilterChange={setTimeFilter}
         showPause={isHovered}
       />
-      <TokenList />
+      <div className="flex-1 min-h-0 overflow-hidden">
+        <TokenList />
+      </div>
     </div>
   );
 }
