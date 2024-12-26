@@ -60,7 +60,7 @@ export function SmartMoney() {
             size={16} 
             className="text-gray-400 group-hover:text-cyan-400 transition-colors" 
           />
-          <span className="font-medium text-white">Smart Money</span>
+          <span className="font-medium text-white">{t('smart_money.title')}</span>
         </div>
         <ChevronDown 
           size={16} 
@@ -82,7 +82,7 @@ export function SmartMoney() {
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Search by name or address"
+                placeholder={t('smart_money.search')}
                 className="w-full pl-9 pr-3 py-2 rounded-lg
                        bg-surface/50 text-white placeholder-gray-400
                        border border-gray-700/50 focus:border-cyan-500/30
@@ -95,7 +95,7 @@ export function SmartMoney() {
           {/* Loading State */}
           {isLoading && (
             <div className="p-4 text-center text-gray-400">
-              Loading smart money data...
+              {t('smart_money.loading')}
             </div>
           )}
 
@@ -111,8 +111,8 @@ export function SmartMoney() {
             <div className="flex-1 overflow-hidden">
               {/* Column Headers */}
               <div className="px-6 py-2 grid grid-cols-2 text-xs text-gray-400 border-b border-gray-800">
-                <span>Name</span>
-                <span className="text-right">Score</span>
+                <span>{t('smart_money.name')}</span>
+                <span className="text-right">{t('smart_money.score')}</span>
               </div>
 
               {/* Scrollable Wallet List */}

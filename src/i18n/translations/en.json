@@ -28,13 +28,52 @@
       "trade": "Trade"
     },
     "watchlist": "from watchlist",
-    "buy": "Buy"
+    "buy": "Buy",
+    "loading": "Loading tokens...",
+    "no_tokens": "No tokens found",
+    "no_tokens_filter": "No tokens match the current filters",
+    "reset_filters": "Reset All Filters",
+    "scanning": "Scanning signals..."
+  },
+  "smart_money": {
+    "title": "Smart Money",
+    "loading": "Loading smart money data...",
+    "search": "Search by name or address",
+    "name": "Name",
+    "score": "Score"
+  },
+  "signals": {
+    "title": "Signals",
+    "search": "Search by token address",
+    "last_update": "Last updates: ",
+    "buy_sell": "Buy & Sell",
+    "buy_only": "Buy Only",
+    "sell_only": "Sell Only"
+  },
+  "common": {
+    "copy": {
+      "success": "Address copied to clipboard",
+      "error": "Failed to copy address"
+    },
+    "actions": {
+      "reset": "Reset",
+      "apply": "Apply"
+    }
+  },
+  "time": {
+    "just_now": "just now",
+    "seconds_ago": "{{seconds}}s ago",
+    "minutes_ago": "{{minutes}}m ago",
+    "hours_ago": "{{hours}}h ago",
+    "days_ago": "{{days}}d ago"
   },
   "token": "Token",
   "sm_amt": "SM Amt",
   "avg_buy_mc": "Avg Buy MC",
   "invested": "Invested",
   "sold": "Sold",
+   "bought": "Bought",
+  "with": "with",
   "mc_holder": "Holder",
   "trade": "Trade"
 }

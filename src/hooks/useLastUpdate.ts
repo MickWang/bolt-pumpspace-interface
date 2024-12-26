@@ -1,25 +1,27 @@
 import { useState, useEffect } from 'react';
+import { useI18n } from '../i18n/i18n';
 
 export function useLastUpdate(timestamp: number) {
   const [displayTime, setDisplayTime] = useState('');
+  const { t } = useI18n();
 
   useEffect(() => {
     const updateDisplay = () => {
       const seconds = Math.floor((Date.now() - timestamp) / 1000);
       if(seconds < 10){
-         setDisplayTime(`just now`);
+         setDisplayTime(t('time.just_now'));
       }
       else if (seconds < 60) {
-        setDisplayTime(`${seconds}s ago`);
+        setDisplayTime(t('time.seconds_ago', { seconds }));
       } else if (seconds < 3600) {
         const minutes = Math.floor(seconds / 60);
-        setDisplayTime(`${minutes}m ago`);
+        setDisplayTime(t('time.minutes_ago', { minutes }));
       } else if (seconds < 86400) {
         const hours = Math.floor(seconds / 3600);
-        setDisplayTime(`${hours}h ago`);
+        setDisplayTime(t('time.hours_ago', { hours }));
       } else {
         const days = Math.floor(seconds / 86400);
-        setDisplayTime(`${days}d ago`);
+        setDisplayTime(t('time.days_ago', { days }));
       }
     };
 
@@ -30,7 +32,7 @@ export function useLastUpdate(timestamp: number) {
     const interval = setInterval(updateDisplay, 1000);
 
     return () => clearInterval(interval);
-  }, [timestamp]);
+  }, [timestamp, t]);
 
   return displayTime;
 }

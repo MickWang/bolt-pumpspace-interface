@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radio, ChevronDown } from 'lucide-react';
+import { useI18n } from '../../i18n/i18n';
 import { useLastUpdate } from '../../hooks/useLastUpdate';
 
 interface SignalsHeaderProps {
@@ -10,6 +11,7 @@ interface SignalsHeaderProps {
 
 export function SignalsHeader({ lastUpdate, isCollapsed, onCollapse }: SignalsHeaderProps) {
   const displayTime = useLastUpdate(lastUpdate);
+  const { t } = useI18n();
 
   return (
     <button
@@ -20,12 +22,12 @@ export function SignalsHeader({ lastUpdate, isCollapsed, onCollapse }: SignalsHe
     >
       <div className="flex items-center space-x-2">
         <Radio size={16} className="text-cyan-400" />
-        <span className="font-medium text-white">Signals</span>
+        <span className="font-medium text-white">{t('signals.title')}</span>
       </div>
       <div className="flex items-center space-x-2">
         <span className="text-xs text-cyan-400">•</span>
         <span className="text-xs text-gray-400">
-          Last updates: {displayTime}
+          {t('signals.last_update')} {displayTime}
         </span>
         <ChevronDown 
           size={16} 

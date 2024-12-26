@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useI18n } from '../../i18n/i18n';
 import { formatNumber, formatPrice } from '../../utils/format';
 import { useLastUpdate } from '../../hooks/useLastUpdate';
 import { TokenDetailsDialog } from './token/TokenDetailsDialog';
@@ -9,6 +10,7 @@ interface SignalItemProps {
 }
 
 export function SignalItem({ signal }: SignalItemProps) {
+  const { t } = useI18n();
   const [showDetails, setShowDetails] = useState(false);
   const displayTime = useLastUpdate(signal.timestamp);
   const tokenAmount = parseFloat(signal.tokenAmount);
@@ -29,7 +31,7 @@ export function SignalItem({ signal }: SignalItemProps) {
         </div>
         <div className="text-xs">
           <span className="text-gray-400">
-            {signal.type === 'buy' ? 'Bought' : 'Sold'} {formatNumber(tokenAmount)}   
+            {signal.type === 'buy' ? t('bought') : t('sold')} {formatNumber(tokenAmount)}   
           </span>
           {' '}
           <span 
@@ -44,7 +46,7 @@ export function SignalItem({ signal }: SignalItemProps) {
             (${formatPrice(price)} M:${formatNumber(marketCap)})
           </span>
           {' '}
-          <span className="text-gray-400">with</span>
+          <span className="text-gray-400">{t('with')}</span>
           {' '}
           <span className="text-gray-300">{formatNumber(solAmountUsd)} SOL</span>
         </div>

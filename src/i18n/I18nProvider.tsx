@@ -8,8 +8,8 @@ const translations = { en, zh };
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
 
-  const t = useCallback((key: string) => {
-    return getNestedValue(translations[language], key);
+  const t = useCallback((key: string, variables?: Record<string, any>) => {
+    return getNestedValue(translations[language], key, variables);
   }, [language]);
 
   return (
