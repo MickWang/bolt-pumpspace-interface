@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpDown } from 'lucide-react';
+import { useI18n } from '../../i18n/i18n';
 import { TradeTypeFilter } from './filters/TradeTypeFilter';
 import { useSignalStore } from '../../hooks/signals/useSignalStore';
 import { useSignalFilterStore } from '../../store/signal/signalFilterStore';
@@ -7,6 +8,7 @@ import { useSignalFilterStore } from '../../store/signal/signalFilterStore';
 export function SignalsFilters() {
   const [showTradeTypeDropdown, setShowTradeTypeDropdown] = useState(false);
   const { signals } = useSignalStore();
+  const { t } = useI18n();
   const { tradeType, setTradeType } = useSignalFilterStore();
 
   // Log when signals or filter changes
@@ -44,8 +46,8 @@ export function SignalsFilters() {
           <span className={`text-sm ${
             tradeType !== 'all' ? 'text-cyan-400' : 'text-gray-400'
           } group-hover:text-cyan-400`}>
-            {tradeType === 'all' ? 'Buy & Sell' : 
-             tradeType === 'buy' ? 'Buy Only' : 'Sell Only'}
+            {tradeType === 'all' ? t('signals.buy_sell') : 
+             tradeType === 'buy' ? t('signals.buy_only') : t('signals.sell_only')}
           </span>
         </button>
         <TradeTypeFilter

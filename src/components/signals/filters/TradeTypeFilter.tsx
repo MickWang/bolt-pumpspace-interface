@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp, ArrowDown, ArrowUpDown } from 'lucide-react';
 import { useClickOutside } from '../../../hooks/useClickOutside';
+import { useI18n } from '../../../i18n/i18n';
 
 interface TradeTypeFilterProps {
   isOpen: boolean;
@@ -16,11 +17,12 @@ export function TradeTypeFilter({
   onChange 
 }: TradeTypeFilterProps) {
   const ref = useClickOutside<HTMLDivElement>(onClose);
+  const { t } = useI18n();
 
   const options = [
-    { value: 'all', label: 'Buy & Sell', icon: ArrowUpDown },
-    { value: 'buy', label: 'Buy Only', icon: ArrowUp },
-    { value: 'sell', label: 'Sell Only', icon: ArrowDown },
+    { value: 'all', label: t('signals.buy_sell'), icon: ArrowUpDown },
+    { value: 'buy', label: t('signals.buy_only'), icon: ArrowUp },
+    { value: 'sell', label: t('signals.sell_only'), icon: ArrowDown },
   ] as const;
 
   if (!isOpen) return null;

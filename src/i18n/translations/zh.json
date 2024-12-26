@@ -6,7 +6,7 @@
     "tg_group": "加入我们的TG群组"
   },
   "filters": {
-    "chad_bags": "仅查看Chad包",
+    "chad_bags": "Chad Bags Only",
     "pause": "暂停",
     "search_placeholder": "搜索地址...",
     "smart_wallets": "智能钱包",
@@ -28,6 +28,52 @@
       "trade": "交易"
     },
     "watchlist": "来自观察列表",
-    "buy": "买入"
-  }
+    "buy": "买入",
+    "loading": "正在加载代币...",
+    "no_tokens": "未找到代币",
+    "no_tokens_filter": "没有符合当前筛选条件的代币",
+    "reset_filters": "重置所有筛选",
+    "scanning": "正在扫描信号..."
+  },
+  "smart_money": {
+    "title": "聪明钱",
+    "loading": "正在加载聪明钱数据...",
+    "search": "按名称或地址搜索",
+    "name": "名称",
+    "score": "评分"
+  },
+  "signals": {
+    "title": "信号",
+    "search": "按代币地址搜索",
+    "last_update": "最后更新: ",
+    "buy_sell": "买入 & 卖出",
+    "buy_only": "仅买入",
+    "sell_only": "仅卖出"
+  },
+  "common": {
+    "copy": {
+      "success": "地址已复制到剪贴板",
+      "error": "复制地址失败"
+    },
+    "actions": {
+      "reset": "重置",
+      "apply": "应用"
+    }
+  },
+  "time": {
+    "just_now": "刚刚",
+    "seconds_ago": "{{seconds}}秒前",
+    "minutes_ago": "{{minutes}}分钟前",
+    "hours_ago": "{{hours}}小时前",
+    "days_ago": "{{days}}天前"
+  },
+    "token": "Token",
+  "sm_amt": "聪明钱数量",
+  "avg_buy_mc": "平均买入市值",
+  "invested": "已投入",
+  "sold": "卖出",
+  "bought": "买入",
+  "with": "以",
+  "mc_holder": "持有者数量",
+  "trade": "交易"
 }

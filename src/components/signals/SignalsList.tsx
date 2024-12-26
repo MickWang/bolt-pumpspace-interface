@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSignalStore } from '../../hooks/signals/useSignalStore';
 import { useSignalFilterStore } from '../../store/signal/signalFilterStore';
+import { useI18n } from '../../i18n/i18n';
 import { SignalItem } from './SignalItem';
 
 export function SignalsList() {
   const { signals } = useSignalStore();
   const { tradeType } = useSignalFilterStore();
+  const { t } = useI18n();
   
   // Filter signals based on selected trade type
   const filteredSignals = signals.filter(signal => {
@@ -28,7 +30,7 @@ export function SignalsList() {
             <div className="absolute inset-0 border-t-2 border-r-2 border-cyan-400/20 rounded-full animate-[spin_2s_linear_infinite]" />
             <div className="absolute inset-0 border-t-2 border-r-2 border-cyan-400/10 rounded-full animate-[spin_1s_linear_infinite]" />
           </div>
-          <span className="text-gray-400 animate-pulse">Scanning signals...</span>
+          <span className="text-gray-400 animate-pulse">{t('table.scanning')}</span>
         </div>
       ) : (
         filteredSignals.map((signal) => (
