@@ -7,6 +7,40 @@ export interface TradingPlatform {
 
 export const tradingPlatforms: TradingPlatform[] = [
   {
+    id: "ave",
+    name: "Ave",
+    icon: "/trade-ave.png",
+    getUrl: (address) =>
+      `https://t.me/AveSniperBot?start=solana-${address}-ref_phanes`,
+  },
+  {
+    id: "pepe-boost",
+    name: "PEPE Boost",
+    icon: "/trade-pepe-boost.png",
+    getUrl: (address) =>
+      `https://t.me/pepeboost_sol_bot?start=ref_0xPhanes_ca_${address}`,
+  },
+  {
+    id: "trojan",
+    name: "Trojan",
+    icon: "/trade-trojan.png",
+    getUrl: (address) =>
+      `https://t.me/solana_trojanbot?start=r-evan_zk-${address}`,
+  },
+  {
+    id: "bonk",
+    name: "Bonk",
+    icon: "/trade-bonk.png",
+    getUrl: (address) =>
+      `https://t.me/furiosa_bonkbot?start=ref_phanes_ca_${address}`,
+  },
+  {
+    id: "mevx",
+    name: "Mevx",
+    icon: "/trade-mevx.png",
+    getUrl: (address) => `https://t.me/MevxTradingBot?start=${address}-phanes`,
+  },
+  {
     id: "gmgn",
     name: "GMGN",
     icon: "/trade-gmgn.png",

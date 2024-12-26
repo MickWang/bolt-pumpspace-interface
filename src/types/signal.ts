@@ -38,4 +38,5 @@ export interface Signal {
   txHash: string;
   smartMoneyAddress: string;
   smartMoneyName: string;
+  uri: string;
 }

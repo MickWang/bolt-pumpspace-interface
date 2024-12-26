@@ -24,7 +24,7 @@ export function TokenActions({ token }: TokenActionsProps) {
     // };
     const url = tradingPlatforms
       .find((item) => item.id === selectedTool.id)
-      ?.getUrl(token.address);
+      ?.getUrl(token.tokenAddress);
     // const url = `${baseUrls[selectedTool.id as keyof typeof baseUrls]}${token.address}`;
     window.open(url, "_blank");
   };

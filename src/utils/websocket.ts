@@ -113,7 +113,8 @@ export class WebSocketClient {
       timestamp: data.timestamp,
       txHash: data.signature,
       smartMoneyAddress: data.user,
-      smartMoneyName: formatSmartMoneyName(data.user)
+      smartMoneyName: formatSmartMoneyName(data.user),
+      uri: data.uri
     };
   }
 

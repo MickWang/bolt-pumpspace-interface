@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Copy, ExternalLink } from 'lucide-react';
+import { useTokenMetadata } from '../../../hooks/useTokenMetadata';
 import { useToast } from '../../../hooks/useToast';
 import { formatAddress } from '../../../utils/format';
 import { TradingPlatformGrid } from './platforms/TradingPlatformGrid';
 import type { Signal } from '../../../types/signal';
+import type { TokenMetadata } from '../../../types/token';
 
 interface TokenDetailsDialogProps {
   signal: Signal;
@@ -12,6 +14,19 @@ interface TokenDetailsDialogProps {
 
 export function TokenDetailsDialog({ signal, onClose }: TokenDetailsDialogProps) {
   const { showToast } = useToast();
+  const { getTokenMetadata } = useTokenMetadata();
+  const [metadata, setMetadata] = useState<TokenMetadata | null>(null);
+
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      if (signal.uri) {
+        const meta = await getTokenMetadata(signal.uri);
+        setMetadata(meta);
+      }
+    };
+    fetchMetadata();
+    console.log('signal: ', signal)
+  }, [signal.uri, getTokenMetadata]);
 
   const handleCopy = async () => {
     try {
@@ -29,11 +44,19 @@ export function TokenDetailsDialog({ signal, onClose }: TokenDetailsDialogProps)
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-800">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-surface flex items-center justify-center">
-              <span className="text-base text-cyan-400">
-                {signal.token.slice(0, 2)}
-              </span>
-            </div>
+            {metadata?.image ? (
+              <img 
+                src={metadata.image} 
+                alt={signal.token}
+                className="w-8 h-8 rounded-full object-cover bg-surface"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-surface flex items-center justify-center">
+                <span className="text-base text-cyan-400">
+                  {signal.token.slice(0, 2)}
+                </span>
+              </div>
+            )}
             <h2 className="text-lg font-medium text-white">${signal.token}</h2>
           </div>
           <button

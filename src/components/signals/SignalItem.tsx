@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { formatNumber, formatPrice, formatTimeAgo } from '../../utils/format';
+import React, { useState, useEffect } from 'react';
+import { formatNumber, formatPrice } from '../../utils/format';
+import { useLastUpdate } from '../../hooks/useLastUpdate';
 import { TokenDetailsDialog } from './token/TokenDetailsDialog';
 import type { Signal } from '../../types/signal';
 
@@ -9,6 +10,7 @@ interface SignalItemProps {
 
 export function SignalItem({ signal }: SignalItemProps) {
   const [showDetails, setShowDetails] = useState(false);
+  const displayTime = useLastUpdate(signal.timestamp);
   const tokenAmount = parseFloat(signal.tokenAmount);
   const price = parseFloat(signal.price);
   const marketCap = parseFloat(signal.marketCap);
@@ -22,7 +24,7 @@ export function SignalItem({ signal }: SignalItemProps) {
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-center space-x-1 text-sm">
             <span className="text-gray-200">{signal.smartMoneyName}</span>
-            <span className="text-gray-500">{formatTimeAgo(signal.timestamp)}</span>
+            <span className="text-gray-500">{displayTime}</span>
           </div>
         </div>
         <div className="text-xs">
