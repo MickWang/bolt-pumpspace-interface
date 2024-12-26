@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { tradingPlatforms } from "../components/signals/token/platforms/TradingPlatform";
 
 interface TradingTool {
   id: string;
@@ -12,6 +13,6 @@ interface TradingToolsStore {
 }
 
 export const useTradingTools = create<TradingToolsStore>((set) => ({
-  selectedTool: { id: "gmgn", name: "GMGN", icon: "/trade-gmgn.png" }, // Default tool
+  selectedTool: tradingPlatforms[0], // Default tool
   setSelectedTool: (tool) => set({ selectedTool: tool }),
 }));
