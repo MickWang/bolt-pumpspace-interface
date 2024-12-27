@@ -10,11 +10,13 @@ export function App() {
     <I18nProvider>
       <div className="min-h-screen h-screen bg-background flex flex-col">
         <Navbar />
-        <div className="flex-1 flex overflow-hidden">
-          <div className="flex-1 min-w-0 flex">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+          <div className="flex-1 min-w-0 flex h-[calc(60vh-4rem)] md:h-auto order-1 md:order-none">
             <TokenContainer />
           </div>
-          <div className="w-80 lg:w-96 flex-shrink-0 hidden md:block">
+          <div className="w-full md:w-80 lg:w-96 flex-shrink-0 
+                       border-b md:border-b-0 md:border-l border-gray-800
+                       h-[40vh] md:h-auto order-2 md:order-none">
             <RightSidebar />
           </div>
         </div>

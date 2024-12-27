@@ -6,8 +6,12 @@ import { useToast } from '../../hooks/useToast';
 import { formatAddress } from '../../utils/format';
 import { useDebounce } from '../../hooks/common/useDebounce';
 
-export function SmartMoney() {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+interface SmartMoneyProps {
+  defaultCollapsed?: boolean;
+}
+
+export function SmartMoney({ defaultCollapsed = true }: SmartMoneyProps) {
+  const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
   const [searchInput, setSearchInput] = useState('');
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
   const { wallets, isLoading, error } = useSmartMoney();

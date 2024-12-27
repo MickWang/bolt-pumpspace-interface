@@ -39,45 +39,48 @@ export function TokenList() {
 
   return (
     <div 
-      className="h-full flex flex-col"
+      className="token-list-wrapper"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {header}
-      
-      <div className="flex-1 overflow-y-auto min-h-0">
-        {sortedTokens.length === 0 ? (
-          <TokenListEmpty />
-        ) : (
-          <AnimatePresence>
-            {sortedTokens.map((token) => (
-              <motion.div
-                key={token.tokenAddress}
-                initial={newTokenAddress === token.tokenAddress ? { 
-                  height: 0,
-                  opacity: 0,
-                  x: -20
-                } : false}
-                animate={{ 
-                  height: 'auto',
-                  opacity: 1,
-                  x: 0
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 500,
-                  damping: 30,
-                  mass: 1
-                }}
-              >
-                <TokenListItem 
-                  token={token}
-                  isNew={token.tokenAddress === newTokenAddress}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        )}
+      <div className="token-list">
+        <div className="token-list__header">
+          {header}
+        </div>
+        <div className="token-list__container">
+          {sortedTokens.length === 0 ? (
+            <TokenListEmpty />
+          ) : (
+            <AnimatePresence>
+              {sortedTokens.map((token) => (
+                <motion.div
+                  key={token.tokenAddress}
+                  initial={newTokenAddress === token.tokenAddress ? { 
+                    height: 0,
+                    opacity: 0,
+                    x: -20
+                  } : false}
+                  animate={{ 
+                    height: 'auto',
+                    opacity: 1,
+                    x: 0
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 30,
+                    mass: 1
+                  }}
+                >
+                  <TokenListItem 
+                    token={token}
+                    isNew={token.tokenAddress === newTokenAddress}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
+        </div>
       </div>
     </div>
   );

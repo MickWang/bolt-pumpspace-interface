@@ -14,9 +14,7 @@ export function TokenListItem({ token, isNew }: TokenListItemProps) {
   const { isPinned, togglePin } = usePinnedTokens();
 
   return (
-    <div className={`px-4 py-3 grid grid-cols-[1.5fr,0.8fr,1fr,1fr,1fr,0.8fr,0.8fr] gap-4 
-                   border-b border-gray-800 hover:bg-surface/50 transition-all duration-200
-                   ${isNew ? 'bg-cyan-500/5' : ''}`}>
+    <div className={`token-list__grid token-list__item ${isNew ? 'token-list__item--new' : ''}`}>
       {/* Token Info */}
       <TokenNameSection
         symbol={token.symbol}

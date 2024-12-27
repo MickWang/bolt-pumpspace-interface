@@ -1,0 +1,57 @@
+.token-list-wrapper {
+  @apply h-full flex flex-col overflow-hidden;
+  
+  @media (max-width: 767px) {
+    @apply overflow-x-auto;
+  }
+}
+
+.token-list {
+  min-width: 900px;
+  @apply h-full flex flex-col overflow-hidden;
+
+  &__header {
+    @apply sticky top-0 z-10;
+  }
+
+  &__container {
+    @apply flex-1 overflow-y-auto min-h-0 relative;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 
+      minmax(150px, 1.5fr)
+      minmax(100px, 0.8fr)
+      minmax(120px, 1fr)
+      minmax(120px, 1fr)
+      minmax(120px, 1fr)
+      minmax(100px, 0.8fr)
+      minmax(100px, 0.8fr);
+    gap: 1rem;
+    @apply px-4 py-3;
+  }
+
+  &__item {
+    @apply border-b border-gray-800 hover:bg-surface/50 transition-colors duration-200;
+
+    &--new {
+      @apply bg-cyan-500/5;
+    }
+  }
+}
+
+// Scrollbar styles
+.token-list-wrapper {
+  &::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+  }
+}

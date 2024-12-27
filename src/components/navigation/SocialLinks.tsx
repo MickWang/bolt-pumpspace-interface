@@ -28,14 +28,14 @@ export function SocialLinks() {
   ;
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex flex-col md:flex-row items-stretch md:items-center space-y-3 md:space-y-0 md:space-x-4">
       {socialLinks.map((link) => (
         <a
           key={link.label}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center space-x-2 px-3 py-1.5 rounded-lg
+          className="flex items-center justify-center md:justify-start space-x-2 px-3 py-2 md:py-1.5 rounded-lg
                    bg-surface/50 hover:bg-surface/80 
                    border border-gray-700/50 hover:border-cyan-500/30
                    transition-all duration-200 group"
